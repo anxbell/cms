@@ -1,0 +1,15 @@
+<div class="panel panel-default" *ngIf="contact">
+    <div class="panel-heading clearfix">
+      <img [src]="contact.imageUrl" class="img-thumbnail pull-left" style="width:100px; margin-right:15px;">
+      <h4 style="line-height:100px; display:inline-block;">{{ contact.name }}</h4>
+      <div class="pull-right" style="margin-top:30px;">
+        <a class="btn btn-primary btn-sm" style="margin-right: 5px; font-size: 1.5rem;">Edit</a>
+        <a class="btn btn-danger btn-sm" style="font-size: 1.5rem;">Delete</a>
+      </div>
+    </div>
+    <div class="panel-body" style="font-size: 1.5rem; margin-top: 10px;">
+      <p><strong>Email:</strong> {{ contact.email }}</p>
+      <p><strong>Phone:</strong> {{ contact.phone }}</p>
+    </div>
+  </div>
+  
