@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'cms';
+export class AppComponent implements OnInit {
+  selectedFeature = 'documents';
+
+  ngOnInit(): void {
+    const savedFeature = localStorage.getItem('selectedFeature');
+    if (savedFeature) {
+      this.selectedFeature = savedFeature;
+    }
+  }
+
+  switchView(feature: string) {
+    this.selectedFeature = feature;
+    localStorage.setItem('selectedFeature', feature);
+    console.log('Switched to:', feature);
+  }
 }
+

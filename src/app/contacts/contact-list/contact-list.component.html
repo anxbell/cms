@@ -17,24 +17,15 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-12">
-          <a href="#" class="list-group-item clearfix" *ngFor="let contact of contacts">
-            <div class="pull-left" style="display: flex; align-items: center; height: 50px;">
-              <h4 class="list-group-item-heading" style="margin: 0; line-height: 1.2;  font-size: 2.1rem;">
-                {{ contact.name }}
-              </h4>
-            </div>
-            <!-- Here placing image -->
-            <span class="pull-right">
-              <img
-                [src]="contact.imageUrl"
-                alt="{{ contact.name }}"
-                class="img-responsive"
-                style="max-height: 50px"
-              />
-            </span>
-          </a>
+          <cms-contact-item
+            *ngFor="let contact of contacts"
+            [contact]="contact"
+            (click)="onSelected(contact)">
+          </cms-contact-item>
         </div>
       </div>
     </div>
   </div>
-  
+  <!-- We use *ngFor to iterate over the contacts and bind each to the contact input of ContactItemComponent.
+
+  The (click) event is bound to the onSelected method. -->
