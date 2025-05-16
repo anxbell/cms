@@ -5,7 +5,7 @@ import { Message } from '../message.model';
   selector: 'cms-message-list',
   standalone: false,
   templateUrl: './message-list.component.html',
-  styleUrl: './message-list.component.css'
+  styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent {
   messages: Message[] = [
@@ -20,19 +20,23 @@ export class MessageListComponent {
       'When is assignment 3 due?', 
       'Valerie Sanchez'),
     new Message(
-      1, 
+      3, 
       'Hello! Due date', 
       'Assignment 3 is due on Saturday at 11:30 PM', 
       'Bro. Jackson'),
       new Message(
-        2, 
+        4, 
         'Due date', 
         'Can I meet with you sometime. I need help with assignment 3', 
         'Karen Perdomo'),
       new Message(
-        1, 
+      5, 
         'Hello! Due date', 
         'I can meet with you today at 4:00 Pm in my office.', 
         'Bro. Jackson'),
   ];
+
+  onAddMessage(message: Message) {
+    this.messages.push(message);
+  }
 }
