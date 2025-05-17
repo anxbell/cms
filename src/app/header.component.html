@@ -9,7 +9,18 @@
         <li><a href="#" (click)="onSelected('contacts')">Contacts</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+        <li class="dropdown" appDropdown>
+          <a href="#" class="dropdown-toggle" role="button">
+            <span class="glyphicon glyphicon-user"></span> User <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Other</a></li>
+             <li style="margin-top: 1rem; border-top: 1px solid #ccc; padding-top: 0.5rem;">
+              <a href="#">Logout</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
 </nav>

@@ -1,1 +1,8 @@
-<p>Hi! I'm documents and I work!</p>
+<div class="row">
+  <div class="col-md-6">
+    <cms-document-list (selectedDocumentEvent)="onDocumentSelected($event)"></cms-document-list>
+  </div>
+  <div class="col-md-6">
+    <cms-document-detail [document]="selectedDocument"></cms-document-detail>
+  </div>
+</div>
