@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,20 +6,20 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  selectedFeature = 'documents';
+export class AppComponent {
+  // selectedFeature = 'documents';
 
-  ngOnInit(): void {
-    const savedFeature = localStorage.getItem('selectedFeature');
-    if (savedFeature) {
-      this.selectedFeature = savedFeature;
-    }
-  }
+  // ngOnInit(): void {
+  //   const savedFeature = localStorage.getItem('selectedFeature');
+  //   if (savedFeature) {
+  //     this.selectedFeature = savedFeature;
+  //   }
+  // }
 
-  switchView(feature: string) {
-    this.selectedFeature = feature;
-    localStorage.setItem('selectedFeature', feature);
-    console.log('Switched to:', feature);
-  }
+  // switchView(feature: string) {
+  //   this.selectedFeature = feature;
+  //   localStorage.setItem('selectedFeature', feature);
+  //   console.log('Switched to:', feature);
+  // }
 }
 

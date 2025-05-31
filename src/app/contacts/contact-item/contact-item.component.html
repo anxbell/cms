@@ -1,4 +1,7 @@
-<a href="#" class="list-group-item clearfix">
+<a 
+  [routerLink]="[contact.id]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
     <div class="pull-left" style="display: flex; align-items: center; height: 50px;">
       <h4 class="list-group-item-heading" style="margin: 0; line-height: 1.2;  font-size: 2.1rem;">
         {{ contact.name }}

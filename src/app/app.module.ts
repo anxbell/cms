@@ -16,6 +16,9 @@ import { DocumentDetailComponent } from './documents/document-detail/document-de
 import { DocumentItemComponent } from './documents/document-item/document-item.component'
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 
 
 @NgModule({
@@ -33,10 +36,13 @@ import { DropdownDirective } from './shared/dropdown.directive';
     DocumentDetailComponent,
     DocumentItemComponent,
     DocumentListComponent,
-    DropdownDirective
+    DropdownDirective,
+    DocumentEditComponent,
+    ContactEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
