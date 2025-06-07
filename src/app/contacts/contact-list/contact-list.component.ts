@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'cms-contact-list',
@@ -10,6 +10,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[] = [];
+  subscription: Subscription;
 
   constructor(private contactService: ContactService) { }
 
@@ -25,32 +26,9 @@ export class ContactListComponent implements OnInit {
   this.contactService.contactSelectedEvent.emit(contact);
   }
 
+    ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }
 
-// export class ContactListComponent {
-//   contacts: Contact[] = [
-//     new Contact(
-//       '1',
-//       'R. Kent Jackson',
-//       'jacksonk@byui.edu',
-//       '208-496-3771',
-//       '../../assets/images/jacksonk.jpg',
-//       null
-//     ),
-//     new Contact(
-//       '1',
-//       'Rex Barzee',
-//       'barzeer@byui.edu',
-//       '208-496-3768',
-//       '../../assets/images/barzeer.jpg',
-//       null
-//     )
-//   ];
-
-//   @Output() selectedContactEvent = new EventEmitter<Contact>();
-
-//   onSelected(contact: Contact) {
-//     this.selectedContactEvent.emit(contact);
-//   }
-
-// }
