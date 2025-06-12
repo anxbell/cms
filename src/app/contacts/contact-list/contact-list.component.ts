@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   standalone: false,
   templateUrl: './contact-list.component.html',
 })
-export class ContactListComponent implements OnInit {
+export class ContactListComponent implements OnInit, OnDestroy {
   contacts: Contact[] = [];
   subscription: Subscription;
 
@@ -17,8 +17,8 @@ export class ContactListComponent implements OnInit {
   ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
     
-    this.contactService.contactChangedEvent.subscribe((contacts: Contact[]) => {
-      this.contacts = contacts;
+    this.contactService.contactChangedEvent.subscribe((contactsList: Contact[]) => {
+      this.contacts = contactsList;
     });
   }
 
@@ -27,7 +27,9 @@ export class ContactListComponent implements OnInit {
   }
 
     ngOnDestroy() {
+      if(this.subscription) {
     this.subscription.unsubscribe();
+    }
   }
 
 }
