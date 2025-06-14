@@ -1,34 +1,29 @@
 <div class="panel panel-default">
-    <!-- Header -->
     <div class="panel-heading clearfix">
-        <div class="pull-left" style="margin-top: 10px; margin-bottom: 10px;">
-            <h3 class="panel-title">
-                <strong style="font-size: 2.8rem">Contacts</strong>
-            </h3>
-        </div>
-        <div class="pull-right" style="margin-top: 5px; margin-bottom: 5px;">
-            <a 
-              [routerLink]="['new']"
-              class="btn btn-success btn-md" 
-              style="color: white; display: inline-flex; align-items: center; justify-content: center; height: 38px; padding: 0 16px;">
-                New Contact
-            </a>
-        </div>
+        <h1 class="panel-title pull-left"><strong>Contacts</strong></h1>
+        <a [routerLink]="['new']" class="btn btn-success pull-right">New Contact</a>
     </div>
-  
-    <!-- Body -->
-    <div class="panel-body">
-      <div class="row">
+
+    <div class="row" cdkDropList id="contactList" [cdkDropListData]="contacts">
         <div class="col-xs-12">
-          <cms-contact-item
-            *ngFor="let contact of contacts"
-            [contact]="contact"
-          >
-          </cms-contact-item>
+            <div
+            cdkDropList
+            id="contactList"
+            [cdkDropListData]="contacts"
+            [cdkDropListConnectedTo]="['groupList']">
+                
+                <cms-contact-item
+                    *ngFor="let contact of contacts"
+                    cdkDrag
+                    [cdkDragData]="contact"
+                    [contact]="contact"
+                    [routerLink]="[contact.id]">
+                </cms-contact-item>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+</div>
   <!-- We use *ngFor to iterate over the contacts and bind each to the contact input of ContactItemComponent.
 
   The (click) event is bound to the onSelected method. -->

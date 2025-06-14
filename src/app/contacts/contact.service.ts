@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
-  contactSelectedEvent = new EventEmitter<Contact>();
-  contactChangedEvent = new EventEmitter<Contact[]>();
+  contactSelectedEvent = new Subject<Contact>();
+  contactChangedEvent = new Subject<Contact[]>();
   maxContactId: number
   contacts: Contact[] = [];
 

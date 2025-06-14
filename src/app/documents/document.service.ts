@@ -8,8 +8,8 @@ import { Subject } from 'rxjs';
 })
 export class DocumentService {
   documents: Document[] = [];
-  documentSelectedEvent = new EventEmitter<Document>();
-  documentChangedEvent = new EventEmitter<Document[]>();
+  documentSelectedEvent = new Subject<Document>();
+  documentChangedEvent = new Subject<Document[]>();
   maxDocumentId: number;
 
 
@@ -52,26 +52,26 @@ export class DocumentService {
   }
 
     addDocument(newDocument: Document) {
-    if (!newDocument) {
+      if (!newDocument) {
+        return;
+      }
+
+      this.maxDocumentId++;
+      newDocument.id = this.maxDocumentId.toString();
+      this.documents.push(newDocument);
+      const documentsListClone = this.documents.slice();
+      this.documentChangedEvent.next(documentsListClone);
+    }
+
+  updateDocument(originalDocument: Document, newDocument: Document) {
+    if (!originalDocument || !newDocument) {
       return;
     }
 
-    this.maxDocumentId++;
-    newDocument.id = this.maxDocumentId.toString();
-    this.documents.push(newDocument);
-    const documentsListClone = this.documents.slice();
-    this.documentChangedEvent.next(documentsListClone);
-  }
-
-  updateDocument(originalDocument: Document, newDocument: Document) {
-  if (!originalDocument || !newDocument) {
-    return;
-  }
-
-  const pos = this.documents.indexOf(originalDocument);
-  if (pos < 0) {
-    return;
-  }
+    const pos = this.documents.indexOf(originalDocument);
+    if (pos < 0) {
+      return;
+    }
 
     newDocument.id = originalDocument.id;
     this.documents[pos] = newDocument;

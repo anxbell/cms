@@ -23,7 +23,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   }
 
   onSelected(contact: Contact) {
-  this.contactService.contactSelectedEvent.emit(contact);
+  this.contactService.contactSelectedEvent.next(contact);
   }
 
     ngOnDestroy() {
