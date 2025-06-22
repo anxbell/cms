@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form id="contact-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form *ngIf="editMode || contact" id="contact-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-12 form-group">
           <label for="name">Name:</label>

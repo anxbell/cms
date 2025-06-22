@@ -1,29 +1,37 @@
 <div class="panel panel-default">
     <div class="panel-heading clearfix">
-        <h1 class="panel-title pull-left"><strong>Contacts</strong></h1>
-        <a [routerLink]="['new']" class="btn btn-success pull-right">New Contact</a>
-    </div>
+        <div class="row">
+          <span class="title pad-left-right" style="font-size: 2.6rem; margin-left: 0.7em; font-weight: bold;"
+            >Contacts</span
+          >
+        </div>
+        <div class="row">
+          <div class="input-group pull-left pad-left-right col-xs-7 " style="margin-left: 1em; padding-bottom: 2rem">
+            <input
+              #searchBox
+              type="text"
+              class="form-control"
+              placeholder="Enter a search value"
+              (keyup)="search(searchBox.value)"
+            />
+            <div class="glyphicon glyphicon-search input-group-addon"
+              (click)="search(searchBox.value)"
+            ></div>
+          </div>
+          <div class="pull-right pad-left-right" style="margin-right: 1em">
+            <a class="btn btn-success" [routerLink]="['new']">New Contact</a>
+          </div>
 
-    <div class="row" cdkDropList id="contactList" [cdkDropListData]="contacts">
-        <div class="col-xs-12">
-            <div
-            cdkDropList
-            id="contactList"
-            [cdkDropListData]="contacts"
-            [cdkDropListConnectedTo]="['groupList']">
-                
-                <cms-contact-item
-                    *ngFor="let contact of contacts"
-                    cdkDrag
-                    [cdkDragData]="contact"
-                    [contact]="contact"
-                    [routerLink]="[contact.id]">
-                </cms-contact-item>
+            <div class="row" cdkDropList id="contactList" [cdkDropListData]="contacts">
+            <div class="col-xs-12">
+                <div cdkDropList id="contactList" [cdkDropListData]="contacts" [cdkDropListConnectedTo]="['groupList']">
+                    <cms-contact-item *ngFor="let contact of contacts | contactsFilter:term" cdkDrag [cdkDragData]="contact" [contact]="contact" [routerLink]="[contact.id]"> </cms-contact-item>
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
 </div>
-  <!-- We use *ngFor to iterate over the contacts and bind each to the contact input of ContactItemComponent.
+<!-- We use *ngFor to iterate over the contacts and bind each to the contact input of ContactItemComponent.
 
   The (click) event is bound to the onSelected method. -->
