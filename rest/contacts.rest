@@ -1,0 +1,36 @@
+### Get all contacts
+GET http://localhost:3000/contacts
+Accept: application/json
+
+###
+
+### Create a new contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "name": "Valerie Sanchez",
+  "email": "valeriesanchez@gmail.com",
+  "phone": "555-1234",
+  "imageUrl": "../../assets/images/sanchezv.jpg",
+  "group": []
+}
+
+###
+
+### Update a contact
+PUT http://localhost:3000/contacts/101
+Content-Type: application/json
+
+{
+  "name": "Valerie Sanchez UPDATED",
+  "email": "valeriesanchez@gmail.com",
+  "phone": "555-1234",
+  "imageUrl": "../../assets/images/sanchezv.jpg",
+  "group": ["106"]
+}
+
+###
+
+### Delete a contact (replace 111 with real id)
+DELETE http://localhost:3000/contacts/103

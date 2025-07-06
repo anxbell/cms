@@ -12,7 +12,8 @@ export class ContactService {
   contactChangedEvent = new Subject<Contact[]>();
   maxContactId: number
   contacts: Contact[] = [];
-  url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/contacts.json'
+  // url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/contacts.json'
+  url: string = 'http://localhost:3000/contacts';//
 
   constructor(private http: HttpClient) {
     // this.contacts = MOCKCONTACTS;

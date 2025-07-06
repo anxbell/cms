@@ -12,7 +12,9 @@ export class DocumentService {
   documentSelectedEvent = new Subject<Document>();
   documentChangedEvent = new Subject<Document[]>();
   maxDocumentId: number;
-  url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/documents.json';
+  // url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/documents.json';
+  url: string = 'http://localhost:3000/documents';
+
 
   constructor(private http: HttpClient) {
     // this.documents = MOCKDOCUMENTS;

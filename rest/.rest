@@ -1,0 +1,28 @@
+### Test GET all documents
+GET http://localhost:3000/documents
+Accept: application/json
+
+### Create a new document
+POST http://localhost:3000/documents
+Content-Type: application/json
+
+{
+  "name": "VYD 230 - Web Page Development",
+  "url": "https://www.byui.edu/computer-information-technology/courses",
+  "description": "Course web page",
+  "children": []
+}
+
+###
+PUT http://localhost:3000/documents/111
+Content-Type: application/json
+
+{
+  "name": "VYD 230 - Web Page Development (Updated)",
+  "url": "https://www.byui.edu/computer-information-technology/courses",
+  "description": "Updated course web page description",
+  "children": []
+}
+
+###
+DELETE http://localhost:3000/documents/112

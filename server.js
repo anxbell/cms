@@ -1,18 +1,20 @@
 // Get dependencies
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 
 // import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
 const messageRoutes = require('./server/routes/messages');
 const contactRoutes = require('./server/routes/contacts');
 const documentRoutes = require('./server/routes/documents');
-
-// ... ADD CODE TO IMPORT YOUR ROUTING FILES HERE ... 
+const sequenceGenerator = require('./server/routes/sequenceGenerator');
 
 const app = express(); // create an instance of express
 
@@ -52,21 +54,28 @@ app.use('/documents', documentRoutes);
 
 // ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
 
-
 // Tell express to map all other non-defined routes back to the index page
 // The regex /.*/ is essentially identical to * in functionality
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/cms/browser/index.html'));
 });
 
-// Define the port address and tell express to use this port
-const port = process.env.PORT || '3000';
-app.set('port', port);
+// Connect to MongoDB
+const port = process.env.PORT || 3000;
 
-// Create HTTP server.
-const server = http.createServer(app);
-
-// Tell the to start listening on the provided port
-server.listen(port, () => {
-  console.log('API running on http://localhost:' + port)
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
+
+const uri = process.env.MONGO_URI;
+// Connect to MongoDB
+mongoose.connect(uri)
+  .then(() => {
+    console.log('Connected to MongoDB!');
+
+    return sequenceGenerator.init();
+  })
+  .catch(err => {
+    console.error('Failed to connect to MongoDB', err);
+    process.exit(1);
+  });

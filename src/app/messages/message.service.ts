@@ -12,7 +12,9 @@ export class MessageService {
   messageChangedEvent = new EventEmitter<Message[]>();
   messages: Message[] = [];
   maxMessageId: number;
-  url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/messages.json';
+  // url: string = 'https://the-cms-project-default-rtdb.firebaseio.com/messages.json';
+  url: string = 'http://localhost:3000/messages';//
+
 
   constructor(private http: HttpClient) {
     // this.messages = MOCKMESSAGES;

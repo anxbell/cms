@@ -1,0 +1,38 @@
+### Get all messages
+GET http://localhost:3000/messages
+Accept: application/json
+
+###
+
+### Get a single message by custom id (if implemented)
+GET http://localhost:3000/messages/111
+Accept: application/json
+
+###
+
+### Create a new message
+POST http://localhost:3000/messages
+Content-Type: application/json
+
+{
+  "subject": "Subject",
+  "msgText": "Check out this course!",
+  "sender": "1"  
+}
+
+###
+
+### Update a message by custom id
+PUT http://localhost:3000/messages/103
+Content-Type: application/json
+
+{
+  "subject": "Subject (Updated)",
+  "msgText": "Updated msg info",
+  "sender": "1"  
+}
+
+###
+
+### Delete a message by custom id
+DELETE http://localhost:3000/messages/103
